@@ -1,0 +1,107 @@
+diff -ruN orig-check/README.md final-check/README.md
+--- orig-check/README.md	2026-10-24 15:40:27.000000000 +0000
++++ final-check/README.md	2026-10-27 20:43:17.000000000 +0000
+@@ -29,7 +29,7 @@
+   <a href="https://github.com/mahdiMGF2/mirzabot/blob/main/LICENSE">
+     <img src="https://img.shields.io/github/license/mahdiMGF2/mirzabot?style=flat-square" alt="License"/>
+   </a>
+-  <img src="https://img.shields.io/badge/PHP-8.5.12%2B-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 8.5.12+"/>
++  <img src="https://img.shields.io/badge/PHP-8.4%2B-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 8.4+"/>
+ </p>
+ 
+ </div>
+@@ -167,7 +167,7 @@
+ |-------------|---------|
+ | 🖥️ **OS** | A **clean** Ubuntu **22.04** or **24.04** server |
+ | 🌐 **Domain** | A domain name pointed to your server's IP |
+-| ⚙️ **Stack** | PHP 8.5.12+, Apache, MySQL, SSL — *installed automatically by the script* |
++| ⚙️ **Stack** | PHP 8.4+, Apache, MySQL, SSL — *installed automatically by the script* |
+ 
+ > 💡 Start from a fresh server with no existing web server, database, or panel installed.
+ 
+diff -ruN orig-check/config.php final-check/config.php
+--- orig-check/config.php	2026-10-24 15:40:27.000000000 +0000
++++ final-check/config.php	2026-10-27 20:58:57.000000000 +0000
+@@ -20,8 +20,8 @@
+     die("error: database connection failed");
+ }
+ $APIKEY = '{API_KEY}';
+-$adminnumber = '{admin_number}';
+-$domainhosts = '{domain_name}';
++$adminnumber = '6922789849';
++$domainhosts = 'nexsrv.ir';
+ $usernamebot = '{username_bot}';
+ 
+ ?>
+diff -ruN orig-check/function.php final-check/function.php
+--- orig-check/function.php	2026-10-24 15:40:27.000000000 +0000
++++ final-check/function.php	2026-10-27 20:43:17.000000000 +0000
+@@ -3,7 +3,7 @@
+ require 'config.php';
+ ini_set('error_log', 'error_log');
+ 
+-const MIN_PHP_VERSION = '8.5.12';
++const MIN_PHP_VERSION = '8.4.0';
+ 
+ use Endroid\QrCode\Builder\Builder;
+ use Endroid\QrCode\Encoding\Encoding;
+diff -ruN orig-check/install/checks.php final-check/install/checks.php
+--- orig-check/install/checks.php	2026-10-24 15:40:27.000000000 +0000
++++ final-check/install/checks.php	2026-10-27 20:43:17.000000000 +0000
+@@ -94,10 +94,10 @@
+ {
+     $items = [];
+ 
+-    $minimumVersion = '8.5.12';
++    $minimumVersion = '8.4.0';
+     $items[] = version_compare(PHP_VERSION, $minimumVersion, '>=')
+         ? mirza_install_item('ok', 'نسخه PHP', PHP_VERSION, 'حداقل نسخه موردنیاز ' . $minimumVersion . ' است.')
+-        : mirza_install_item('fail', 'نسخه PHP', PHP_VERSION, 'نسخه PHP باید ' . $minimumVersion . ' یا بالاتر باشد. از بخش Select PHP Version (یا MultiPHP Manager) در کنترل پنل هاست نسخه 8.5 را انتخاب کنید؛ اگر هاست این نسخه را ندارد از پشتیبانی هاست ارتقای PHP را بخواهید.');
++        : mirza_install_item('fail', 'نسخه PHP', PHP_VERSION, 'نسخه PHP باید ' . $minimumVersion . ' یا بالاتر باشد. از بخش Select PHP Version (یا MultiPHP Manager) در کنترل پنل هاست نسخه 8.4 را انتخاب کنید؛ اگر هاست این نسخه را ندارد از پشتیبانی هاست ارتقای PHP را بخواهید.');
+ 
+     if (version_compare(PHP_VERSION, '9.0.0', '>=')) {
+         $items[] = mirza_install_item('warn', 'سازگاری نسخه', PHP_VERSION, 'این نسخه هنوز روی ربات تست نشده است؛ نسخه 8.5 پیشنهاد می‌شود.');
+diff -ruN orig-check/lang/en.php final-check/lang/en.php
+--- orig-check/lang/en.php	2026-10-24 15:40:27.000000000 +0000
++++ final-check/lang/en.php	2026-10-27 20:43:17.000000000 +0000
+@@ -4838,6 +4838,6 @@
+ The bot is disabled for all users until PHP is upgraded.
+ 
+ 🖥 <b>Server (VPS):</b> run <code>mirza update-php</code> or choose "Update PHP" in the <code>mirza</code> menu.
+-🌐 <b>Shared hosting:</b> in the hosting control panel open Select PHP Version (or MultiPHP Manager / PHP Version) and choose PHP 8.5 for the bot domain. If the host does not offer %2$s or newer, ask the hosting support to upgrade PHP.',
++🌐 <b>Shared hosting:</b> in the hosting control panel open Select PHP Version (or MultiPHP Manager / PHP Version) and choose PHP 8.4 for the bot domain. If the host does not offer %2$s or newer, ask the hosting support to upgrade PHP.',
+         ],
+ ];
+diff -ruN orig-check/lang/fa.php final-check/lang/fa.php
+--- orig-check/lang/fa.php	2026-10-24 15:40:27.000000000 +0000
++++ final-check/lang/fa.php	2026-10-27 20:43:17.000000000 +0000
+@@ -4822,6 +4822,6 @@
+ تا زمان ارتقای PHP، ربات برای همه کاربران غیرفعال است.
+ 
+ 🖥 <b>سرور (VPS):</b> دستور <code>mirza update-php</code> را اجرا کنید یا در منوی <code>mirza</code> گزینه «Update PHP» را بزنید.
+-🌐 <b>هاست:</b> از کنترل پنل هاست بخش Select PHP Version (یا MultiPHP Manager / PHP Version) نسخه 8.5 را برای دامنه ربات انتخاب کنید. اگر هاست نسخه %2$s یا بالاتر ندارد، از پشتیبانی هاست ارتقای PHP را بخواهید.',
++🌐 <b>هاست:</b> از کنترل پنل هاست بخش Select PHP Version (یا MultiPHP Manager / PHP Version) نسخه 8.4 را برای دامنه ربات انتخاب کنید. اگر هاست نسخه %2$s یا بالاتر ندارد، از پشتیبانی هاست ارتقای PHP را بخواهید.',
+         ],
+ ];
+diff -ruN orig-check/lang/ru.php final-check/lang/ru.php
+--- orig-check/lang/ru.php	2026-10-24 15:40:27.000000000 +0000
++++ final-check/lang/ru.php	2026-10-27 20:43:17.000000000 +0000
+@@ -4838,6 +4838,6 @@
+ Бот отключён для всех пользователей до обновления PHP.
+ 
+ 🖥 <b>Сервер (VPS):</b> выполните <code>mirza update-php</code> или выберите «Update PHP» в меню <code>mirza</code>.
+-🌐 <b>Хостинг:</b> в панели управления хостингом откройте Select PHP Version (или MultiPHP Manager / PHP Version) и выберите PHP 8.5 для домена бота. Если хостинг не предлагает %2$s или новее, попросите поддержку хостинга обновить PHP.',
++🌐 <b>Хостинг:</b> в панели управления хостингом откройте Select PHP Version (или MultiPHP Manager / PHP Version) и выберите PHP 8.4 для домена бота. Если хостинг не предлагает %2$s или новее, попросите поддержку хостинга обновить PHP.',
+         ],
+ ];
+diff -ruN orig-check/lang/zh.php final-check/lang/zh.php
+--- orig-check/lang/zh.php	2026-10-24 15:40:27.000000000 +0000
++++ final-check/lang/zh.php	2026-10-27 20:43:17.000000000 +0000
+@@ -4838,6 +4838,6 @@
+ 在升级 PHP 之前，机器人对所有用户停用。
+ 
+ 🖥 <b>服务器（VPS）：</b>运行 <code>mirza update-php</code>，或在 <code>mirza</code> 菜单中选择 “Update PHP”。
+-🌐 <b>虚拟主机：</b>在主机控制面板中打开 Select PHP Version（或 MultiPHP Manager / PHP Version），为机器人域名选择 PHP 8.5。如果主机不提供 %2$s 或更高版本，请联系主机客服升级 PHP。',
++🌐 <b>虚拟主机：</b>在主机控制面板中打开 Select PHP Version（或 MultiPHP Manager / PHP Version），为机器人域名选择 PHP 8.4。如果主机不提供 %2$s 或更高版本，请联系主机客服升级 PHP。',
+         ],
+ ];
